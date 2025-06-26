@@ -6,5 +6,6 @@ model = joblib.load("model.pkl")
 
 @app.get("/predict")
 def predict(x: float):
-    y = model.predict([[x]])
+    import numpy as np
+    y = model.predict(np.array([[x]]))
     return {"prediction": y.tolist()}
